@@ -35,13 +35,14 @@ define("RFC_SIZE", 1024 * 1024 * 4);
 define("PAGE_COLUMNS", 72);
 define("BUF_SIZE", 8192);
 define("CENTRAL_ERROR", 4);
-define("REF_PATTERN", '/\[RFC\s+(\d+)\]/');
+define("REF_PATTERN", '/RFC\s*(\d{1,4})/i');
 define("REF_REPLACE", '<a class="ref" href="rfc2html.php?in=\1">\0</a>');
 define("REFED_REPLACE", '<a class="ref" name="REF\1" href="rfc2html.php?in=\1">\0</a>');
 # define("REFED_REPLACE", '<a name="REF\1">\0</a>');
 define("SEC_NUMBER", '/^(\d+(\.(\d|\w)+)*)(\s|\.)/');
 define("SEC_PATTERN", '/((section|sec)\s*(\d+(\.\d+)*))/i');
 define("SEC_REPLACE", '<a class="sec" href="#SEC\3">\0</a>');
+define("RFCPATH",'../');
 $schemes = array('http', 'https', 'ftp');
 
 function rfc2html($pages)
@@ -521,8 +522,8 @@ if($_GET['in']) {
 	$rfcno = '';
 	if(ctype_digit($in)) {
 		$rfcno = $in;
-		if(file_exists("./rfc$in.txt")) {
-			$filename = "./rfc$in.txt";
+		if(file_exists(RFCPATH."/rfc$in.txt")) {
+			$filename = RFCPATH."/rfc$in.txt";
 			$from = 'local';
 		} else {
 			$filename = "http://www.ietf.org/rfc/rfc$in.txt";
