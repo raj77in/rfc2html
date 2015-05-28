@@ -510,9 +510,8 @@ function change(e)
 }
 -->
 </script>
-<link type="text/css" href="/css/rwstyle.css" rel="stylesheet" />
-<link type="text/css" href="rfc2html.css" rel="stylesheet" />
-<?php @include 'rfc2html_style.php'; ?>	
+<link type="text/css" href="rfc2html.min.css" rel="stylesheet" />
+<!-- <?php @include 'rfc2html_style.php'; ?>	 -->
 
 <?php
 if($_GET['in']) {
@@ -585,7 +584,7 @@ if($_GET['in']) {
 <div><a name="top"></a></div>
 
 <div class="head">
-	<?php @include 'rfc2html_head.php'; ?>	
+	<!-- <?php @include 'rfc2html_head.php'; ?>	 -->
 </div>
 
 <!-- Top Toolbar commented out by Amit Agarwal
