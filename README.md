@@ -11,14 +11,16 @@ Original idea and code from : [sf.net project](http://sourceforge.net/projects/r
     + MAILTO - Email address (your's preferably :) ) , so you get a mail when the cron is completed with results.
     + Add this script in cron for once a month or so with :
 
-        > * * 1 * * <path>/update-rfc.sh |/usr/sbin/sendmail -t
+         ``* * 1 * * <path>/update-rfc.sh |/usr/sbin/sendmail -t``
 
 ## Setup of script
 
 * Next, you need to download the jQuery datatables to the current folder along with the jquery js, with following commands:
-    > wget http://cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui.css
-    > wget //cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui.js
-    > wget http://code.jquery.com/jquery-2.1.4.min.js
+    ``
+    wget http://cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui.css
+    wget //cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui.js
+    wget http://code.jquery.com/jquery-2.1.4.min.js
+    ``
 
 * Now add the jquery js in index.php file.
 
