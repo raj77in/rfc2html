@@ -24,6 +24,52 @@
 
 <p>Original idea and code from : <a href="http://sourceforge.net/projects/rfc2html-php">sf.net project</a></p>
 
+<h1>
+<a id="installation-and-configuration" class="anchor" href="#installation-and-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation and configuration</h1>
+
+<h2>
+<a id="setup-of-cron" class="anchor" href="#setup-of-cron" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup of Cron</h2>
+
+<ul>
+<li>
+<p>First you need to configure the update-rfc.sh script and then add in crontab.</p>
+
+<ul>
+<li>DATADIR - Directory where you would like your rfc's to be downloaded. Ideally this should be directory under your document root, so you can browse this.</li>
+<li>MAILTO - Email address (your's preferably <img class="emoji" title=":smile:" alt=":smile:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f604.png" height="20" width="20" align="absmiddle"> ) , so you get a mail when the cron is completed with results.</li>
+<li>
+<p>Add this script in cron for once a month or so with :</p>
+
+<div class="highlight highlight-bash"><pre> <span class="pl-k">*</span> <span class="pl-k">*</span> 1 <span class="pl-k">*</span> <span class="pl-k">*</span> <span class="pl-k">&lt;</span>path<span class="pl-k">&gt;</span>/update-rfc.sh <span class="pl-k">|</span>/usr/sbin/sendmail -t</pre></div>
+</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="setup-of-script" class="anchor" href="#setup-of-script" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup of script</h2>
+
+<ul>
+<li>
+<p>Next, you need to download the jQuery datatables to the current folder along with the jquery js, with following commands:</p>
+
+<div class="highlight highlight-bash"><pre>wget http://cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui.css
+wget //cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui.js
+wget http://code.jquery.com/jquery-2.1.4.min.js</pre></div>
+</li>
+<li><p>Now add the jquery js in index.php file.</p></li>
+<li>
+<img class="emoji" title=":alien:" alt=":alien:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f47d.png" height="20" width="20" align="absmiddle"> Dont forget to change the <code>rfile</code> , <code>./rfc2html/rfc2html.xslt</code> paths in the index.php file and </li>
+<li>
+<img class="emoji" title=":star2:" alt=":star2:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f31f.png" height="20" width="20" align="absmiddle"> RFCPATH in rfc2html.php file.</li>
+</ul>
+
+<p>Now you are all set to browse your rfc collection and viewer.</p>
+
+<p>Please visit <a href="http://blog.amit-agarwal.co.in" title="Amit Agarwals blog">my blog</a></p>
+
+<p>Check out your changes in <a href="http://dillinger.io/">markdown online</a></p>
+
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/raj77in/rfc2html">Rfc2html</a> is maintained by <a href="https://github.com/raj77in">raj77in</a>.</span>
 
