@@ -19,17 +19,28 @@
  */
 
 /** 
- * @version $Id: rfc2html.php,v 1.9 2006/02/08 21:44:42 chmate Exp $
- * @author Chang Hsiou-Ming <chmate@gmail.com>
+ * @originalauthor Chang Hsiou-Ming <chmate@gmail.com>
+ * @author Amit Agarwal <http://blog.amit-agarwal.co.in>
  */
 
+global $cfg;
+$cfg=parse_ini_file("rfc2html.cfg", true);
+//print_r($cfg);
+
+if ( !empty ($cfg['Global']['phphead']) ) 
+    include  $cfg['Global']['phphead'];
+else {
+    echo "<html> <head> <body>"; 
 echo '<?xml version="1.0" encoding="iso-8859-1" ?>';
 echo "\n";
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
+}
 
+foreach ( $cfg['index']['js'] as $js ) 
+    echo '<script type="text/javascript" charset="utf8" src="'.$js.'"></script>';
+foreach ( $cfg['index']['stylesheets'] as $css ) 
+    echo '<link rel="stylesheet" type="text/css" href="'.$css.'">';
 
-<?php
 
 define("RFC_SIZE", 1024 * 1024 * 4);
 define("PAGE_COLUMNS", 72);
@@ -42,7 +53,7 @@ define("REFED_REPLACE", '<a class="ref" name="REF\1" href="rfc2html.php?in=\1">\
 define("SEC_NUMBER", '/^(\d+(\.(\d|\w)+)*)(\s|\.)/');
 define("SEC_PATTERN", '/((section|sec)\s*(\d+(\.\d+)*))/i');
 define("SEC_REPLACE", '<a class="sec" href="#SEC\3">\0</a>');
-define("RFCPATH",'../');
+define("RFCPATH",$cfg['Global']['RFCPATH']);
 $schemes = array('http', 'https', 'ftp');
 
 function rfc2html($pages)
@@ -626,7 +637,12 @@ if($_GET['in']) {
 	}
 ?>
 <a class='gotop' href='#top'>top</a>
+<?php
+global $cfg;
+if ( !empty ($cfg['Global']['phphead']) ) 
+    include  $cfg['Global']['phphead'];
+else {
+    echo "</body></html>"; }
+?>
 
-</body>
-</html>
 
