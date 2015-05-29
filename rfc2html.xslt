@@ -9,12 +9,15 @@
             <thead>
                 <th>RFC Number</th>
                 <th>Description</th>
+                <th>Errata</th>
             </thead>
             <xsl:for-each select="rfc-entry">
                 <tr>
                     <xsl:variable name="rfcno" select="substring-after(doc-id,'RFC')"/>
                     <td><a href="/repo/RFC/rfc2html/rfc2html.php?in={$rfcno}"> RFC<xsl:value-of select="$rfcno"/></a> </td>
                     <td><xsl:value-of select="title"/></td>
+                    <xsl:variable name="rfcerr" select="errata-url"/>
+                    <td><a href="{$rfcerr}">Errata</a></td>
                 </tr>
             </xsl:for-each>
         </table>

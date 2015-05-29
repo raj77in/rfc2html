@@ -36,9 +36,9 @@ echo "\n";
 echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
 }
 
-foreach ( $cfg['index']['js'] as $js ) 
+foreach ( $cfg['rfc2html']['js'] as $js ) 
     echo '<script type="text/javascript" charset="utf8" src="'.$js.'"></script>';
-foreach ( $cfg['index']['stylesheets'] as $css ) 
+foreach ( $cfg['rfc2html']['stylesheets'] as $css ) 
     echo '<link rel="stylesheet" type="text/css" href="'.$css.'">';
 
 
@@ -390,137 +390,6 @@ function page2lines($page)
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<script type="text/javascript">
-<!--
-function add_event(obj, e_type, func)
-{
-	if(obj.addEventListener){
-		obj.addEventListener(e_type, func, false);
-		return true;
-	} else if(obj.attachEvent){
-		var r = obj.attachEvent("on"+e_type, func);
-		return r;
-	} else {
-		return false;
-	}
-}
-
-function load()
-{
-	var elms = document.getElementsByTagName('span');
-	for(var i=0; i<elms.length; i++) {
-		if(elms.item(i).className != 'expand')
-			continue;
-		//document.write(i + '<br />');
-		//elms.item(i).addEventListener("click", expand, false);
-		add_event(elms.item(i), "click", expand);
-	}
-
-	init_deck();
-}
-
-function expand_all()
-{
-	var ea = document.getElementById('expand_all');
-	var elms = document.getElementsByTagName('ul');
-
-	var d = 'block';
-	if(ea.innerHTML == 'Expand All') {
-		ea.innerHTML = 'Collapse All';
-	} else {
-		ea.innerHTML = 'Expand All';
-		d = 'none';
-	}
-
-	for(var i=0; i<elms.length; i++) {
-		if(elms.item(i).className != 'ul_toc')
-			continue;
-		elms.item(i).style.display = d;
-	}
-	
-}
-
-function expand(e)
-{
-	var elm;
-	if(window.event && window.event.srcElement){
-		elm = window.event.srcElement;
-	} else if(e && e.target){
-		elm = e.target;
-	}
-
-	if(!elm)
-		return;
-
-	var id = 'u' + elm.id.substr(1);
-	var ue = document.getElementById(id);
-	if(ue) {
-		if(ue.style.display == 'block')
-			ue.style.display = 'none';
-		else
-			ue.style.display = 'block';
-	}
-	
-}
-
-function init_deck()
-{
-	var navlist = document.getElementById('navlist');
-	if(!navlist)
-		return;
-
-	var tabs = navlist.childNodes;
-	for(var i=0; i<tabs.length; i++) {
-		if(tabs[i].nodeType != 1 || tabs[i].tagName.toLowerCase() != 'li')
-			continue;
-		var e = tabs[i].firstChild;
-		add_event(e, "click", change);
-	}
-}
-
-function change(e)
-{
-	var elm;
-	if(window.event && window.event.srcElement){
-		elm = window.event.srcElement;
-	} else if(e && e.target){
-		elm = e.target;
-	}
-
-	if(!elm)
-		return;
-
-	id = elm.getAttribute('title');
-	if(!id) {
-		id = elm.innerHTML;
-	}
-
-	id = 'deck_' + id;
-
-
-	var navlist = document.getElementById('navlist');
-	if(!navlist)
-		return;
-	var tabs = navlist.childNodes;
-	for(var i=0; i<tabs.length; i++) {
-		if(tabs[i].nodeType != 1 || tabs[i].tagName.toLowerCase() != 'li')
-			continue;
-		tabs[i].className = '';
-	}
-	elm.parentNode.className = 'select';
-	
-	var decks = document.getElementById('decks').childNodes;
-	for(var i=0; i<decks.length; i++) {
-		if(decks[i].nodeType != 1 || decks[i].tagName.toLowerCase() != 'div')
-			continue;
-		if(decks[i].id == id)
-			decks[i].style.display = 'block';
-		else
-			decks[i].style.display = 'none';
-	}
-}
--->
-</script>
 <link type="text/css" href="rfc2html.min.css" rel="stylesheet" />
 <!-- <?php @include 'rfc2html_style.php'; ?>	 -->
 
@@ -639,8 +508,8 @@ if($_GET['in']) {
 <a class='gotop' href='#top'>top</a>
 <?php
 global $cfg;
-if ( !empty ($cfg['Global']['phphead']) ) 
-    include  $cfg['Global']['phphead'];
+if ( !empty ($cfg['Global']['phptail']) ) 
+    include  $cfg['Global']['phptail'];
 else {
     echo "</body></html>"; }
 ?>
